@@ -516,7 +516,7 @@ body {
   align-items: center;
   position: relative;
   overflow: hidden;
-  padding-top: 10rem;
+  padding-top: 2rem;
 }
 
 /* خلفية شبكية متحركة */
@@ -657,7 +657,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin-bottom: 36px;
+  margin-bottom: 30px;
 }
 
 /* تعليق CSS: تنسيق كل Tag من Tags الخدمات. */
@@ -808,19 +808,37 @@ body {
 /* تعليق CSS: الشكل الهندسي الماسي في الجانب البصري من Hero. */
 .geo-diamond {
   position: absolute;
-  width: 200px;
-  height: 200px;
+  width: 320px;
+  height: 320px;
   background: linear-gradient(
     135deg,
-    rgba(45, 57, 86, 0.08),
-    rgba(45, 57, 86, 0.015)
+    rgba(45, 57, 86, 0.5),
+    rgba(45, 57, 86, 0.5)
   );
-  border: 1.5px solid rgba(45, 57, 86, 0.18);
+  border: 1.5px solid rgba(45, 57, 86, 0.3);
   transform: rotate(45deg);
   border-radius: 24px;
   animation: diamondPulse 6s ease-in-out infinite;
-  filter: blur(1px);
+  filter: blur(0.5px);
   z-index: 0;
+}
+@media (max-width: 768px) {
+  .geo-diamond {
+    position: absolute;
+    width: 210px;
+    height: 210px;
+    background: linear-gradient(
+      135deg,
+      rgba(45, 57, 86, 0.5),
+      rgba(45, 57, 86, 0.5)
+    );
+    border: 1.5px solid rgba(45, 57, 86, 0.3);
+    transform: rotate(45deg);
+    border-radius: 24px;
+    animation: diamondPulse 6s ease-in-out infinite;
+    filter: blur(0.5px);
+    z-index: 0;
+  }
 }
 /* تعليق CSS: Animation تحدد مراحل الحركة المستخدمة في الموقع. */
 @keyframes diamondPulse {
@@ -841,7 +859,7 @@ body {
 .geo-ring {
   position: absolute;
   border-radius: 50%;
-  border: 1px solid rgba(45, 57, 86, 0.15);
+  border: 1px solid rgba(45, 57, 86, 0.5);
   animation: ringExpand 6s ease-in-out infinite;
   filter: blur(0.7px);
   z-index: 0;
@@ -884,15 +902,15 @@ body {
 /* حاوية الصورة الشخصية */
 /* تعليق CSS: الحاوية الدائرية للصورة الشخصية. */
 .profile-img-container {
-  width: 280px;
-  height: 280px;
+  width: 300px;
+  height: 300px;
   border-radius: 50%;
   position: relative;
   overflow: hidden;
   margin: 5px;
   border: 2px solid rgba(45, 57, 86, 0.4);
   background: linear-gradient(135deg, #f1f0ea, #e9e8e2);
-  z-index: 999;
+  z-index: 1;
 }
 
 /* ===== تجاوب صورة الهيرو للهواتف ===== */
@@ -1084,15 +1102,15 @@ body {
 /* تعليق CSS: مؤشر التمرير الموجود أسفل Hero. */
 .scroll-indicator {
   position: absolute;
-  bottom: 20px;
+  bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
 }
 
 .scroll-line {
-  width: 1px;
-  height: 40px;
+  width: 1.5px;
+  height: 60px;
   background: linear-gradient(to bottom, var(--primary), transparent);
   margin: 0 auto 8px;
   animation: scrollPulse 2s ease-in-out infinite;
@@ -1100,7 +1118,7 @@ body {
 @media (max-width: 768px) {
   .scroll-indicator {
     position: absolute;
-    bottom: 20px;
+    bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
@@ -1136,7 +1154,7 @@ body {
 /* تعليق CSS: تخطيط شبكة بطاقات المزايا. */
 .benefits-grid {
   display: grid;
-  gap: 24px;
+  gap: 10px;
 }
 
 /* تعليق CSS: تخطيط شبكة بطاقات قسم About. */
@@ -1319,10 +1337,12 @@ body {
 /* تعليق CSS: صف الإحصائيات والأرقام المتحركة. */
 .stats-row {
   display: flex;
-  gap: 32px;
+  gap: 36px;
   flex: 0 0 auto;
   animation: marquee 50s linear infinite;
   transition: animation-play-state 0.2s;
+  background-color: var(--primary);
+  color: var(--bg);
 }
 
 /* تعليق CSS: تنسيق عنصر إحصائية واحد. */
@@ -1351,9 +1371,9 @@ body {
 /* تعليق CSS: تنسيق الرقم المتحرك داخل الإحصائية. */
 .stat-number {
   font-family: var(--font-display);
-  font-size: 2rem;
+  font-size: 1rem;
   font-weight: 900;
-  color: var(--primary);
+  color: #fff;
 }
 
 .stat-label {
@@ -2479,5 +2499,905 @@ body::after {
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
+  }
+}
+/* ============================================================
+   N8N CHAT
+   Ahmed AlGamal - Clean Premium Theme
+   ============================================================ */
+
+/* ============================================================
+   01. CHAT BRAND VARIABLES
+   ------------------------------------------------------------
+   الألوان الأساسية والخطوط والأحجام المستخدمة في الشات
+   ============================================================ */
+
+:root {
+  /* ----------------------------------------------------------
+     ألوان الهوية الأساسية
+     ---------------------------------------------------------- */
+
+  --chat--color-primary: #2d3956;
+  --chat--color-primary-shade-50: #27334f;
+  --chat--color-primary-shade-100: #1f2940;
+
+  --chat--color-secondary: #2d3956;
+  --chat--color-secondary-shade-50: #27334f;
+
+  --chat--color-white: #ffffff;
+
+  /* ----------------------------------------------------------
+     ألوان الخلفيات الفاتحة
+     ---------------------------------------------------------- */
+
+  --chat--color-light: #f8f7f2;
+  --chat--color-light-shade-50: #f1f0eb;
+  --chat--color-light-shade-100: #e3e2dc;
+
+  --chat--color-medium: #c9c9c5;
+
+  /* ----------------------------------------------------------
+     اللون الداكن
+     ---------------------------------------------------------- */
+
+  --chat--color-dark: #2d3956;
+
+  --chat--color-disabled: #9296a0;
+  --chat--color-typing: #747985;
+
+  /* ==========================================================
+     02. GENERAL CHAT SETTINGS
+     ========================================================== */
+
+  /* نفس خط الموقع */
+  --chat--font-family: "Syne", sans-serif;
+
+  /* المسافة الأساسية */
+  --chat--spacing: 12px;
+
+  /* تدوير الحواف */
+  --chat--border-radius: 18px;
+
+  /* سرعة الحركات */
+  --chat--transition-duration: 0.25s;
+
+  /* ==========================================================
+     03. CHAT WINDOW
+     ========================================================== */
+
+  /* عرض نافذة الشات */
+  --chat--window--width: 360px;
+
+  /* ارتفاع نافذة الشات */
+  --chat--window--height: 525px;
+
+  /* ==========================================================
+     04. CHAT HEADER
+     ========================================================== */
+
+  /* Padding الهيدر */
+  --chat--header--padding: 17px 20px;
+
+  /* خلفية الهيدر */
+  --chat--header--background: #ffffff;
+
+  /* لون نص الهيدر */
+  --chat--header--color: #2d3956;
+
+  /* الخط السفلي */
+  --chat--header--border-bottom: 1px solid rgba(45, 57, 86, 0.08);
+
+  /* حجم العنوان */
+  --chat--heading--font-size: 1.15rem;
+
+  /* حجم الوصف */
+  --chat--subtitle--font-size: 0.72rem;
+
+  /* ارتفاع سطر الوصف */
+  --chat--subtitle--line-height: 1.4;
+
+  /* ==========================================================
+     05. CHAT BODY
+     ========================================================== */
+
+  /* خلفية منطقة الرسائل */
+  --chat--body--background: #f8f7f2;
+
+  /* ==========================================================
+     06. CHAT MESSAGES
+     ========================================================== */
+
+  /* Padding منطقة الرسائل */
+  --chat--messages-list--padding: 18px;
+
+  /* حجم الخط */
+  --chat--message--font-size: 0.84rem;
+
+  /* المسافة داخل الفقاعة */
+  --chat--message--padding: 11px 14px;
+
+  /* تدوير الفقاعة */
+  --chat--message--border-radius: 16px;
+
+  /* ارتفاع السطر */
+  --chat--message-line-height: 1.55;
+
+  /* المسافة بين الرسائل */
+  --chat--message--margin-bottom: 12px;
+
+  /* ----------------------------------------------------------
+     رسالة الـ AI
+     ---------------------------------------------------------- */
+
+  --chat--message--bot--background: #eef0f3;
+
+  --chat--message--bot--color: #2d3956;
+
+  --chat--message--bot--border: none;
+
+  /* ----------------------------------------------------------
+     رسالة المستخدم
+     ---------------------------------------------------------- */
+
+  --chat--message--user--background: #2d3956;
+
+  --chat--message--user--color: #ffffff;
+
+  --chat--message--user--border: none;
+
+  /* ==========================================================
+     07. CHAT FOOTER
+     ========================================================== */
+
+  /* خلفية منطقة الإدخال */
+  --chat--footer--background: #f8f7f2;
+
+  /* لون النص */
+  --chat--footer--color: #2d3956;
+
+  /* Padding الفوتر */
+  --chat--footer--padding: 12px 14px;
+
+  /* الخط العلوي */
+  --chat--footer--border-top: 1px solid rgba(45, 57, 86, 0.08);
+
+  /* ==========================================================
+     08. CHAT INPUT
+     ========================================================== */
+
+  /* حجم خط الإدخال */
+  --chat--input--font-size: 0.82rem;
+
+  /* المسافة الداخلية */
+  --chat--input--padding: 12px 15px;
+
+  /* خلفية مربع الكتابة */
+  --chat--input--background: #ffffff;
+
+  /* لون النص */
+  --chat--input--text-color: #2d3956;
+
+  /* الحدود */
+  --chat--input--border: 1px solid rgba(45, 57, 86, 0.12);
+
+  /* الحدود عند الضغط */
+  --chat--input--border-active: 1px solid rgba(45, 57, 86, 0.25);
+
+  /* حجم placeholder */
+  --chat--input--placeholder--font-size: 0.8rem;
+
+  /* ارتفاع السطر */
+  --chat--input--line-height: 1.4;
+
+  /* ارتفاع مربع الكتابة */
+  --chat--textarea--height: 48px;
+
+  /* أقصى ارتفاع */
+  --chat--textarea--max-height: 120px;
+
+  /* ==========================================================
+     09. SEND BUTTON
+     ========================================================== */
+
+  /* لون أيقونة الإرسال */
+  --chat--input--send--button--color: #ffffff;
+
+  /* لون الأيقونة عند Hover */
+  --chat--input--send--button--color-hover: #ffffff;
+
+  /* خلفية زر الإرسال */
+  --chat--input--send--button--background: #2d3956;
+
+  /* خلفية الزر عند Hover */
+  --chat--input--send--button--background-hover: #27334f;
+
+  /* حجم الزر */
+  --chat--input--send--button--size: 48px;
+
+  /* شكل دائري */
+  --chat--input--send--button--border-radius: 50%;
+
+  /* ==========================================================
+     10. FLOATING TOGGLE
+     ========================================================== */
+
+  /* خلفية زر فتح الشات */
+  --chat--toggle--background: #2d3956;
+
+  /* Hover */
+  --chat--toggle--hover--background: #27334f;
+
+  /* Active */
+  --chat--toggle--active--background: #1f2940;
+
+  /* لون الأيقونة */
+  --chat--toggle--color: #ffffff;
+
+  /* حجم الزر */
+  --chat--toggle--size: 58px;
+}
+
+/* ============================================================
+   11. CHAT WINDOW
+   ------------------------------------------------------------
+   الشكل الخارجي لنافذة الشات
+   ============================================================ */
+
+.chat-window {
+  /* تدوير الحواف */
+  border-radius: 20px !important;
+
+  /* منع أي عنصر من الخروج */
+  overflow: hidden !important;
+
+  /* Border خفيف */
+  border: 1px solid rgba(45, 57, 86, 0.13) !important;
+
+  /* Shadow هادئ */
+  box-shadow: 0 16px 38px rgba(39, 51, 79, 0.12) !important;
+
+  /* خلفية النافذة */
+  background: #f8f7f2 !important;
+
+  /* الخط */
+  font-family: "Syne", sans-serif !important;
+}
+
+/* ============================================================
+   12. CHAT HEADER
+   ------------------------------------------------------------
+   هيدر الشات والعنوان والوصف
+   ============================================================ */
+
+.chat-header {
+  /* خلفية بيضاء */
+  background: #ffffff !important;
+
+  /* Padding متوازن */
+  padding: 17px 20px !important;
+
+  /* Border سفلي خفيف */
+  border-bottom: 1px solid rgba(45, 57, 86, 0.08) !important;
+
+  /* الخط */
+  font-family: "Syne", sans-serif !important;
+}
+
+/* ------------------------------------------------------------
+   عنوان الشات
+   ------------------------------------------------------------ */
+
+.chat-header h1,
+.chat-header h2,
+.chat-header h3 {
+  /* خط الموقع */
+  font-family: "Syne", sans-serif !important;
+
+  /* حجم العنوان */
+  font-size: 1.15rem !important;
+
+  /* وزن متوسط */
+  font-weight: 700 !important;
+
+  /* لون الهوية */
+  color: #2d3956 !important;
+
+  /* إزالة المسافات الافتراضية */
+  margin: 0 !important;
+
+  /* ارتفاع مريح */
+  line-height: 1.3 !important;
+}
+
+/* ------------------------------------------------------------
+   وصف الشات
+   ------------------------------------------------------------ */
+
+.chat-header p {
+  /* نفس الخط */
+  font-family: "Syne", sans-serif !important;
+
+  /* حجم صغير */
+  font-size: 0.72rem !important;
+
+  /* لون هادئ */
+  color: rgba(45, 57, 86, 0.58) !important;
+
+  /* المسافة من العنوان */
+  margin-top: 5px !important;
+
+  /* ارتفاع السطر */
+  line-height: 1.4 !important;
+}
+
+/* ============================================================
+   13. CHAT BODY
+   ------------------------------------------------------------
+   منطقة المحادثة الرئيسية
+   ============================================================ */
+
+.chat-body {
+  /* لون الخلفية */
+  background: #f8f7f2 !important;
+
+  /* الخط */
+  font-family: "Syne", sans-serif !important;
+}
+
+/* ============================================================
+   14. MESSAGES CONTAINER
+   ------------------------------------------------------------
+   إضافة مساحة حول الرسائل حتى لا تكون ملتصقة بالحواف
+   ============================================================ */
+
+.chat-messages-list {
+  /* مساحة داخلية من كل الاتجاهات */
+  padding: 18px !important;
+
+  /* الخلفية */
+  background: #f8f7f2 !important;
+
+  /* الخط */
+  font-family: "Syne", sans-serif !important;
+}
+
+/* ============================================================
+   15. GENERAL MESSAGE
+   ------------------------------------------------------------
+   إعدادات عامة لكل رسالة
+   ============================================================ */
+
+.chat-message {
+  /* نفس خط الموقع */
+  font-family: "Syne", sans-serif !important;
+
+  /* حجم الخط */
+  font-size: 0.84rem !important;
+
+  /* ارتفاع السطر */
+  line-height: 1.55 !important;
+
+  /* المسافة بين الرسائل */
+  margin-bottom: 12px !important;
+
+  /* مهم جدًا:
+     لا نعطي الرسالة نفسها Background
+     حتى لا يظهر مستطيل إضافي حول الفقاعة */
+  background: transparent !important;
+}
+
+/* ============================================================
+   16. BOT MESSAGE
+   ------------------------------------------------------------
+   فقاعة رسالة الذكاء الاصطناعي
+   ============================================================ */
+
+.chat-message-from-bot {
+  /* عدم إضافة خلفية خارجية */
+  background: transparent !important;
+
+  /* مساحة حول الفقاعة */
+  padding: 3px 0 !important;
+}
+
+/* ------------------------------------------------------------
+   فقاعة النص نفسها
+   ------------------------------------------------------------ */
+
+.chat-message-from-bot .chat-message-markdown {
+  /* لون واحد للفقاعة بالكامل */
+  background: #eef0f3 !important;
+
+  /* لون النص */
+  color: #2d3956 !important;
+
+  /* تدوير الحواف */
+  border-radius: 16px !important;
+
+  /* Padding داخلي */
+  padding: 11px 14px !important;
+
+  /* منع أي Border */
+  border: none !important;
+
+  /* الخط */
+  font-family: "Syne", sans-serif !important;
+
+  /* حجم النص */
+  font-size: 0.84rem !important;
+
+  /* ارتفاع السطر */
+  line-height: 1.55 !important;
+
+  /* منع الظلال */
+  box-shadow: none !important;
+}
+
+/* ------------------------------------------------------------
+   النص داخل رسالة البوت
+   ------------------------------------------------------------ */
+
+.chat-message-from-bot .chat-message-markdown p {
+  /* إزالة Margin الافتراضي */
+  margin: 0 !important;
+
+  /* نفس الخط */
+  font-family: "Syne", sans-serif !important;
+
+  /* لون النص */
+  color: #2d3956 !important;
+}
+
+/* ============================================================
+   17. USER MESSAGE
+   ------------------------------------------------------------
+   فقاعة رسالة المستخدم
+   ============================================================ */
+
+.chat-message-from-user {
+  /* عدم وجود خلفية خارجية */
+  background: transparent !important;
+
+  /* مساحة بسيطة */
+  padding: 3px 0 !important;
+}
+
+/* ------------------------------------------------------------
+   فقاعة المستخدم نفسها
+   ------------------------------------------------------------ */
+
+.chat-message-from-user .chat-message-markdown {
+  /* لون الهوية */
+  background: #2d3956 !important;
+
+  /* نص أبيض */
+  color: #ffffff !important;
+
+  /* تدوير الحواف */
+  border-radius: 16px !important;
+
+  /* Padding */
+  padding: 11px 14px !important;
+
+  /* بدون Border */
+  border: none !important;
+
+  /* نفس الخط */
+  font-family: "Syne", sans-serif !important;
+
+  /* حجم النص */
+  font-size: 0.84rem !important;
+
+  /* ارتفاع السطر */
+  line-height: 1.55 !important;
+
+  /* بدون Shadow */
+  box-shadow: none !important;
+}
+
+/* ------------------------------------------------------------
+   النص داخل رسالة المستخدم
+   ------------------------------------------------------------ */
+
+.chat-message-from-user .chat-message-markdown p {
+  /* إزالة المسافات */
+  margin: 0 !important;
+
+  /* نفس الخط */
+  font-family: "Syne", sans-serif !important;
+
+  /* اللون */
+  color: #ffffff !important;
+}
+
+/* ============================================================
+   18. CHAT INPUT AREA
+   ------------------------------------------------------------
+   منطقة الكتابة والإرسال بالكامل
+   ============================================================ */
+
+.chat-inputs {
+  /* خلفية الفوتر */
+  background: #f8f7f2 !important;
+
+  /* Border علوي */
+  border-top: 1px solid rgba(45, 57, 86, 0.08) !important;
+
+  /* المسافات */
+  padding: 10px 12px 12px !important;
+
+  /* Flex */
+  display: flex !important;
+
+  /* العناصر في نفس المستوى */
+  align-items: center !important;
+
+  /* إزالة أي Margin غير مرغوب */
+  margin: 0 !important;
+
+  /* إزالة أي Transform */
+  transform: none !important;
+
+  /* الخط */
+  font-family: "Syne", sans-serif !important;
+
+  /* Gap ثابت */
+  gap: 10px !important;
+}
+
+/* ============================================================
+   19. TEXTAREA
+   ------------------------------------------------------------
+   مربع كتابة الرسالة
+   ============================================================ */
+
+.chat-inputs textarea {
+  /* الخلفية */
+  background: #ffffff !important;
+
+  /* Border */
+  border: 1px solid rgba(45, 57, 86, 0.12) !important;
+
+  /* تدوير الحواف */
+  border-radius: 14px !important;
+
+  /* لون النص */
+  color: #2d3956 !important;
+
+  /* الخط */
+  font-family: "Syne", sans-serif !important;
+
+  /* حجم الخط */
+  font-size: 0.82rem !important;
+
+  /* ارتفاع */
+  min-height: 48px !important;
+
+  /* أقصى ارتفاع */
+  max-height: 120px !important;
+
+  /* Padding */
+  padding: 12px 15px !important;
+
+  /* إزالة Resize */
+  resize: none !important;
+
+  /* إزالة Shadow */
+  box-shadow: none !important;
+
+  /* منع اختلاف الحجم */
+  box-sizing: border-box !important;
+
+  /* محاذاة النص */
+  line-height: 1.4 !important;
+}
+
+/* ------------------------------------------------------------
+   Placeholder
+   ------------------------------------------------------------ */
+
+.chat-inputs textarea::placeholder {
+  /* لون هادئ */
+  color: rgba(45, 57, 86, 0.58) !important;
+
+  /* نفس الخط */
+  font-family: "Syne", sans-serif !important;
+
+  /* الحجم */
+  font-size: 0.8rem !important;
+
+  /* Opacity */
+  opacity: 1 !important;
+}
+
+/* ------------------------------------------------------------
+   عند الضغط على مربع الكتابة
+   ------------------------------------------------------------ */
+
+.chat-inputs textarea:focus {
+  /* إزالة Outline */
+  outline: none !important;
+
+  /* Border أوضح قليلًا */
+  border-color: rgba(45, 57, 86, 0.25) !important;
+
+  /* Glow خفيف جدًا */
+  box-shadow: 0 0 0 3px rgba(45, 57, 86, 0.035) !important;
+}
+
+/* ============================================================
+   20. SEND BUTTON
+   ------------------------------------------------------------
+   زر إرسال الرسالة
+   ============================================================ */
+
+.chat-inputs button {
+  /* عدم السماح للزر بالتمدد */
+  flex: 0 0 48px !important;
+
+  /* العرض */
+  width: 48px !important;
+
+  /* الارتفاع */
+  height: 48px !important;
+
+  /* نفس ارتفاع مربع الكتابة */
+  min-height: 48px !important;
+
+  /* خلفية الهوية */
+  background: #2d3956 !important;
+
+  /* لون الأيقونة */
+  color: #ffffff !important;
+
+  /* شكل دائري */
+  border-radius: 50% !important;
+
+  /* إزالة Border */
+  border: none !important;
+
+  /* إزالة Margin */
+  margin: 0 !important;
+
+  /* إزالة Padding */
+  padding: 0 !important;
+
+  /* محاذاة الأيقونة */
+  display: flex !important;
+
+  align-items: center !important;
+
+  justify-content: center !important;
+
+  /* منع اختلاف الحجم */
+  box-sizing: border-box !important;
+
+  /* حركة بسيطة */
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease !important;
+}
+
+/* ------------------------------------------------------------
+   Hover على زر الإرسال
+   ------------------------------------------------------------ */
+
+.chat-inputs button:hover {
+  /* لون أغمق */
+  background: #27334f !important;
+
+  /* حركة بسيطة جدًا */
+  transform: translateY(-1px) !important;
+}
+
+/* ------------------------------------------------------------
+   أيقونة الإرسال
+   ------------------------------------------------------------ */
+
+.chat-inputs button svg {
+  /* حجم الأيقونة */
+  width: 22px !important;
+
+  height: 22px !important;
+
+  /* لون أبيض */
+  color: #ffffff !important;
+
+  /* Fill */
+  fill: #ffffff !important;
+}
+
+/* ============================================================
+   21. FLOATING CHAT TOGGLE
+   ------------------------------------------------------------
+   زر فتح وإغلاق الشات الموجود أسفل الصفحة
+   ============================================================ */
+
+.chat-window-toggle {
+  /* الحجم */
+  width: 58px !important;
+
+  height: 58px !important;
+
+  /* دائرة كاملة */
+  border-radius: 50% !important;
+
+  /* لون الهوية */
+  background: #2d3956 !important;
+
+  /* لون الأيقونة */
+  color: #ffffff !important;
+
+  /* Shadow هادئ */
+  box-shadow: 0 10px 25px rgba(45, 57, 86, 0.16) !important;
+
+  /* حركة */
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease !important;
+}
+
+/* ------------------------------------------------------------
+   Hover على زر الشات
+   ------------------------------------------------------------ */
+
+.chat-window-toggle:hover {
+  /* لون أغمق */
+  background: #27334f !important;
+
+  /* حركة بسيطة */
+  transform: translateY(-2px) !important;
+}
+
+/* ============================================================
+   22. QUICK REPLIES
+   ------------------------------------------------------------
+   تنسيق أزرار الاختيارات السريعة إن ظهرت داخل الشات
+   ============================================================ */
+
+.chat-window button {
+  /* الخط */
+  font-family: "Syne", sans-serif !important;
+}
+
+/* ============================================================
+   23. SCROLLBAR
+   ------------------------------------------------------------
+   شريط التمرير داخل المحادثة
+   ============================================================ */
+
+.chat-messages-list::-webkit-scrollbar {
+  /* العرض */
+  width: 5px !important;
+}
+
+/* ------------------------------------------------------------
+   خلفية شريط التمرير
+   ------------------------------------------------------------ */
+
+.chat-messages-list::-webkit-scrollbar-track {
+  /* شفافة */
+  background: transparent !important;
+}
+
+/* ------------------------------------------------------------
+   الجزء المتحرك من شريط التمرير
+   ------------------------------------------------------------ */
+
+.chat-messages-list::-webkit-scrollbar-thumb {
+  /* لون هادئ */
+  background: rgba(45, 57, 86, 0.25) !important;
+
+  /* تدوير */
+  border-radius: 10px !important;
+}
+
+/* ============================================================
+   24. MOBILE
+   ------------------------------------------------------------
+   ضبط الشات على الموبايل
+   ============================================================ */
+
+@media (max-width: 600px) {
+  /* ----------------------------------------------------------
+     نافذة الشات
+     ---------------------------------------------------------- */
+
+  .chat-window {
+    /* عرض مناسب للموبايل */
+    width: calc(100vw - 24px) !important;
+
+    /* ارتفاع متجاوب */
+    height: min(560px, calc(100vh - 100px)) !important;
+
+    /* المسافة من اليمين */
+    right: 12px !important;
+
+    /* المسافة من الأسفل */
+    bottom: 76px !important;
+
+    /* تدوير الحواف */
+    border-radius: 18px !important;
+  }
+
+  /* ----------------------------------------------------------
+     الهيدر
+     ---------------------------------------------------------- */
+
+  .chat-header {
+    /* Padding أقل على الموبايل */
+    padding: 14px 16px !important;
+  }
+
+  /* ----------------------------------------------------------
+     عنوان الهيدر
+     ---------------------------------------------------------- */
+
+  .chat-header h1,
+  .chat-header h2,
+  .chat-header h3 {
+    /* حجم مناسب */
+    font-size: 1.05rem !important;
+  }
+
+  /* ----------------------------------------------------------
+     الرسائل
+     ---------------------------------------------------------- */
+
+  .chat-message {
+    /* حجم أصغر */
+    font-size: 0.82rem !important;
+  }
+
+  /* ----------------------------------------------------------
+     فقاعة الرسالة
+     ---------------------------------------------------------- */
+
+  .chat-message-from-bot .chat-message-markdown,
+  .chat-message-from-user .chat-message-markdown {
+    /* Padding مناسب */
+    padding: 10px 13px !important;
+
+    /* حجم الخط */
+    font-size: 0.82rem !important;
+  }
+
+  /* ----------------------------------------------------------
+     منطقة الإدخال
+     ---------------------------------------------------------- */
+
+  .chat-inputs {
+    /* Gap أصغر */
+    gap: 8px !important;
+
+    /* Padding */
+    padding: 9px 10px 11px !important;
+  }
+
+  /* ----------------------------------------------------------
+     زر الإرسال
+     ---------------------------------------------------------- */
+
+  .chat-inputs button {
+    /* الحجم */
+    flex-basis: 46px !important;
+
+    width: 46px !important;
+
+    height: 46px !important;
+
+    min-height: 46px !important;
+  }
+
+  /* ----------------------------------------------------------
+     مربع الكتابة
+     ---------------------------------------------------------- */
+
+  .chat-inputs textarea {
+    /* نفس ارتفاع الزر */
+    min-height: 46px !important;
+
+    /* حجم الخط */
+    font-size: 0.8rem !important;
   }
 }
