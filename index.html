@@ -476,30 +476,54 @@
           <form class="contact-form glass-card" id="contactForm">
             <!-- حقل ادخال اسم المرسل -->
             <div class="form-group">
-              <input placeholder="Your Name" required="" type="text" />
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Your Name"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="Phone Number"
+                autocomplete="tel"
+                required
+              />
             </div>
             <!-- حقل ادخال البريد الالكتروني للمتابع -->
             <div class="form-group">
-              <input placeholder="Email Address" required="" type="email" />
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Email Address"
+                autocomplete="email"
+                required
+              />
             </div>
             <!-- حقل اختيار الخدمة المطلوبة -->
             <div class="form-group">
-              <select>
+              <select id="service" name="service" required>
                 <option value="">Choose a service...</option>
-                <option value="Google Ads">Google Ads</option>
-                <option value="Meta Ads">Meta Ads</option>
-                <option value="Lead Generation">Lead Generation</option>
-                <option value="AI Automation">AI Automation</option>
-                <option value="Landing Page">Landing Page</option>
-                <option value="Full Growth System">Full Growth System</option>
+                <option value="Meta Ads / Lead Generation">
+                  Meta Ads / Lead Generation
+                </option>
+                <option value="Web Development">Web Development</option>
+                <option value="Automation">Automation</option>
+                <option value="Graphic Design">Graphic Design</option>
               </select>
             </div>
             <!-- حقل نصي لوصف المشروع أو الفكرة -->
             <div class="form-group">
               <textarea
+                id="message"
+                name="message"
                 placeholder="Tell me about your business"
-                required=""
-                rows="1"
+                required
               ></textarea>
             </div>
             <button class="btn btn-primary" type="submit">
@@ -872,21 +896,360 @@
         }
         generateParticles();
 
-        // --------------------------------------------------------
-        // [9. CONTACT FORM - نموذج التواصل]
-        // --------------------------------------------------------
-        // تعليق JS: التحكم في نموذج التواصل ورسالة نجاح الإرسال.
+        // ============================================================
+        // 09. CONTACT FORM - نموذج التواصل
+        // ------------------------------------------------------------
+        // إرسال بيانات الفورم إلى Google Sheets
+        // مع التحقق من رقم الهاتف والإيميل قبل الإرسال
+        // ============================================================
+
+        // ============================================================
+        // 09.1 GOOGLE APPS SCRIPT URL
+        // ------------------------------------------------------------
+        // ضع هنا رابط Web App الخاص بـ Google Apps Script
+        // ============================================================
+
+        const GOOGLE_SCRIPT_URL =
+          "https://script.google.com/macros/s/AKfycbwSMNbsk8fhWGg9ass6cj6Tg9NYDYflYeV5WyQAVw3ISWnuIPFeiYzlX-wpmJiBDW7bxg/exec";
+
+        // ============================================================
+        // 09.2 GET FORM ELEMENTS
+        // ------------------------------------------------------------
+        // الحصول على عناصر الفورم
+        // ============================================================
+
         const contactForm = document.getElementById("contactForm");
+
         const formSuccess = document.getElementById("formSuccess");
-        if (contactForm) {
-          contactForm.addEventListener("submit", (e) => {
-            e.preventDefault();
-            formSuccess.classList.add("show");
-            contactForm.reset();
-            setTimeout(() => formSuccess.classList.remove("show"), 5000);
-          });
+
+        // ============================================================
+        // 09.3 GET INPUT ELEMENTS
+        // ------------------------------------------------------------
+        // الحصول على الحقول
+        // ============================================================
+
+        const nameInput = document.getElementById("name");
+
+        const phoneInput = document.getElementById("phone");
+
+        const emailInput = document.getElementById("email");
+
+        const serviceInput = document.getElementById("service");
+
+        const messageInput = document.getElementById("message");
+
+        // ============================================================
+        // 09.4 PHONE CLEANER
+        // ------------------------------------------------------------
+        // تنظيف رقم الهاتف قبل التحقق والإرسال
+        // ============================================================
+
+        function cleanUAEPhone(phone) {
+          // تحويل القيمة إلى نص
+          phone = String(phone || "");
+
+          // إزالة المسافات والشرطات والأقواس وعلامة +
+          phone = phone.replace(/\D/g, "");
+
+          // إذا بدأ الرقم بـ 00971
+          // نحذف 00
+          if (phone.startsWith("00971")) {
+            phone = phone.substring(2);
+          }
+
+          // إذا بدأ بـ 0
+          // نحذف الصفر المحلي
+          if (phone.startsWith("0")) {
+            phone = phone.substring(1);
+          }
+
+          // إذا لم يبدأ بـ 971
+          // نضيف كود الإمارات
+          if (!phone.startsWith("971")) {
+            phone = "971" + phone;
+          }
+
+          // التحقق من رقم موبايل إماراتي
+          const uaePhoneRegex = /^9715\d{8}$/;
+
+          // إذا الرقم غير صحيح
+          if (!uaePhoneRegex.test(phone)) {
+            return null;
+          }
+
+          // الرقم النهائي النظيف
+          return phone;
         }
 
+        // ============================================================
+        // 09.5 EMAIL VALIDATION
+        // ------------------------------------------------------------
+        // التحقق من صيغة البريد الإلكتروني
+        // ============================================================
+
+        function isValidEmail(email) {
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+          return emailRegex.test(String(email || "").trim());
+        }
+
+        // ============================================================
+        // 09.6 SHOW FORM ERROR
+        // ------------------------------------------------------------
+        // عرض رسالة خطأ للمستخدم
+        // ============================================================
+
+        function showFormError(message) {
+          // إذا كان هناك رسالة نجاح ظاهرة
+          if (formSuccess) {
+            formSuccess.classList.remove("show");
+          }
+
+          // البحث عن رسالة الخطأ
+          let formError = document.getElementById("formError");
+
+          // إذا لم تكن موجودة
+          if (!formError) {
+            formError = document.createElement("div");
+
+            formError.id = "formError";
+
+            formError.style.marginTop = "12px";
+
+            formError.style.padding = "12px 15px";
+
+            formError.style.borderRadius = "12px";
+
+            formError.style.fontSize = "0.85rem";
+
+            formError.style.fontFamily = '"Syne", sans-serif';
+
+            formError.style.color = "#2d3956";
+
+            formError.style.background = "rgba(45, 57, 86, 0.06)";
+
+            contactForm.appendChild(formError);
+          }
+
+          // وضع رسالة الخطأ
+          formError.textContent = message;
+
+          // إظهار الرسالة
+          formError.style.display = "block";
+        }
+
+        // ============================================================
+        // 09.7 HIDE FORM ERROR
+        // ------------------------------------------------------------
+        // إخفاء رسالة الخطأ
+        // ============================================================
+
+        function hideFormError() {
+          const formError = document.getElementById("formError");
+
+          if (formError) {
+            formError.style.display = "none";
+          }
+        }
+
+        // ============================================================
+        // 09.8 FORM SUBMIT
+        // ------------------------------------------------------------
+        // تنفيذ عملية الإرسال
+        // ============================================================
+
+        if (contactForm) {
+          contactForm.addEventListener("submit", async function (e) {
+            // منع Reload للصفحة
+            e.preventDefault();
+
+            // إخفاء أي Error قديم
+            hideFormError();
+
+            // ==================================================
+            // 1. GET VALUES
+            // ==================================================
+
+            const name = nameInput.value.trim();
+
+            const phone = phoneInput.value.trim();
+
+            const email = emailInput.value.trim();
+
+            const service = serviceInput.value.trim();
+
+            const message = messageInput.value.trim();
+
+            // ==================================================
+            // 2. VALIDATE NAME
+            // ==================================================
+
+            if (!name) {
+              showFormError("Please enter your name.");
+
+              nameInput.focus();
+
+              return;
+            }
+
+            // ==================================================
+            // 3. CLEAN PHONE
+            // ==================================================
+
+            const cleanPhone = cleanUAEPhone(phone);
+
+            // ==================================================
+            // 4. VALIDATE PHONE
+            // ==================================================
+
+            if (!cleanPhone) {
+              showFormError(
+                "Please enter a valid UAE mobile number, e.g. 0507761628.",
+              );
+
+              phoneInput.focus();
+
+              return;
+            }
+
+            // ==================================================
+            // 5. VALIDATE EMAIL
+            // ==================================================
+
+            if (!isValidEmail(email)) {
+              showFormError("Please enter a valid email address.");
+
+              emailInput.focus();
+
+              return;
+            }
+
+            // ==================================================
+            // 6. VALIDATE SERVICE
+            // ==================================================
+
+            if (!service) {
+              showFormError("Please choose a service.");
+
+              serviceInput.focus();
+
+              return;
+            }
+
+            // ==================================================
+            // 7. VALIDATE MESSAGE
+            // ==================================================
+
+            if (!message) {
+              showFormError("Please tell me a little about your business.");
+
+              messageInput.focus();
+
+              return;
+            }
+
+            // ==================================================
+            // 8. PREPARE DATA
+            // --------------------------------------------------
+            // الرقم هنا أصبح:
+            // 971507761628
+            // ==================================================
+
+            const formData = {
+              name: name,
+
+              phone: cleanPhone,
+
+              email: email,
+
+              service: service,
+
+              message: message,
+            };
+
+            // ==================================================
+            // 9. DISABLE SUBMIT BUTTON
+            // --------------------------------------------------
+            // منع الضغط أكثر من مرة
+            // ==================================================
+
+            const submitButton = contactForm.querySelector(
+              'button[type="submit"]',
+            );
+
+            const originalButtonText = submitButton
+              ? submitButton.innerHTML
+              : "";
+
+            if (submitButton) {
+              submitButton.disabled = true;
+
+              submitButton.innerHTML = "Sending...";
+            }
+
+            // ==================================================
+            // 10. SEND TO GOOGLE SHEETS
+            // ==================================================
+
+            try {
+              await fetch(GOOGLE_SCRIPT_URL, {
+                method: "POST",
+
+                mode: "no-cors",
+
+                headers: {
+                  "Content-Type": "text/plain;charset=utf-8",
+                },
+
+                body: JSON.stringify(formData),
+              });
+
+              // ==================================================
+              // 11. SUCCESS
+              // ==================================================
+
+              if (formSuccess) {
+                formSuccess.classList.add("show");
+              }
+
+              // ==================================================
+              // 12. RESET FORM
+              // ==================================================
+
+              contactForm.reset();
+
+              // ==================================================
+              // 13. HIDE SUCCESS MESSAGE
+              // --------------------------------------------------
+              // بعد 5 ثواني
+              // ==================================================
+
+              setTimeout(function () {
+                if (formSuccess) {
+                  formSuccess.classList.remove("show");
+                }
+              }, 5000);
+            } catch (error) {
+              // ==================================================
+              // 14. ERROR
+              // ==================================================
+
+              showFormError("Something went wrong. Please try again.");
+
+              console.error("Google Sheets Error:", error);
+            } finally {
+              // ==================================================
+              // 15. ENABLE BUTTON AGAIN
+              // ==================================================
+
+              if (submitButton) {
+                submitButton.disabled = false;
+
+                submitButton.innerHTML = originalButtonText;
+              }
+            }
+          });
+        }
         // --------------------------------------------------------
         // [10. PARALLAX EFFECT - تأثير تحرك العناصر مع الماوس]
         // --------------------------------------------------------
