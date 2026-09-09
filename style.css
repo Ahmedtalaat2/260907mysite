@@ -65,6 +65,26 @@ img {
   display: block;
 }
 
+/* ===== تحسينات عامة ===== */
+html {
+  scroll-padding-top: 84px;
+}
+button {
+  font: inherit;
+}
+input {
+  font: inherit;
+}
+select {
+  font: inherit;
+}
+textarea {
+  font: inherit;
+}
+button {
+  border: 0;
+}
+
 /* ===== خلفية الموقع ===== */
 body::before {
   content: "";
@@ -212,6 +232,11 @@ body::after {
 
     padding-right: 16px;
   }
+}
+
+/* ===== تحسين الحاويات ===== */
+.container {
+  min-width: 0;
 }
 
 /* ===== عناوين الأقسام ===== */
@@ -509,6 +534,20 @@ body::after {
   }
 }
 
+/* ===== تحسين Navbar ===== */
+.nav-container {
+  min-width: 0;
+}
+.nav-container {
+  gap: 20px;
+}
+.nav-links {
+  flex-shrink: 0;
+}
+.nav-link.nav-cta {
+  white-space: nowrap;
+}
+
 /* ===== Hero ===== */
 .hero {
   min-height: 100vh;
@@ -659,6 +698,25 @@ body::after {
   transform: translateY(-3px);
 }
 /* تجاوب (max-width: 1024px) and (min-width: 769px) */
+
+/* ===== تحسين Hero ===== */
+.hero-container {
+  min-width: 0;
+}
+.hero-content {
+  min-width: 0;
+}
+.hero-visual {
+  min-width: 0;
+}
+.hero-container {
+  grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+  gap: 20px;
+}
+.hero-headline {
+  overflow-wrap: anywhere;
+}
+
 @media (max-width: 1024px) and (min-width: 769px) {
   .hero-container {
     grid-template-columns: 1fr;
@@ -866,6 +924,207 @@ body::after {
 }
 
 /* تجاوب (max-width: 420px) */
+
+@media (max-width: 420px) {
+  .hero-badge {
+    margin: 0.5rem 0 1rem;
+
+    padding: 7px 11px;
+
+    font-size: 0.72rem;
+  }
+}
+
+/* ===== تجاوب Hero المحسن ===== */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+
+    text-align: center;
+  }
+
+  .hero-visual {
+    order: -1;
+  }
+
+  .hero-tags {
+    justify-content: center;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .hero-socials {
+    justify-content: center;
+  }
+}
+
+/* تجاوب (max-width: 768px) */
+@media (max-width: 768px) {
+  .hero {
+    padding-top: 8rem;
+
+    padding-bottom: 1rem;
+  }
+
+  .hero-container {
+    grid-template-columns: 1fr;
+
+    gap: 15px;
+
+    text-align: center;
+  }
+
+  .hero-content {
+    order: 2;
+  }
+
+  .hero-visual {
+    order: 1;
+
+    min-height: auto;
+
+    padding-bottom: 2.5rem;
+  }
+
+  .hero-tags {
+    justify-content: center;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .hero-socials {
+    justify-content: center;
+  }
+
+  .hero-headline {
+    font-size: 1.8rem;
+  }
+
+  .hero-tags {
+    margin-bottom: 20px;
+  }
+
+  .tag {
+    font-size: 0.65rem;
+
+    padding: 6px 12px;
+  }
+
+  .hero-buttons {
+    font-size: 0.8rem;
+
+    padding: 0 10px;
+
+    margin-bottom: 30px;
+  }
+}
+
+/* تجاوب (max-width: 1100px) */
+@media (max-width: 1100px) {
+  .hero-container {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .hero-headline {
+    font-size: clamp(2rem, 4.2vw, 3.4rem);
+  }
+}
+
+/* تجاوب (max-width: 900px) */
+@media (max-width: 900px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+
+    text-align: center;
+
+    gap: 10px;
+  }
+
+  .hero-content {
+    order: 2;
+  }
+
+  .hero-visual {
+    order: 1;
+
+    min-height: 360px;
+  }
+
+  .hero-tags {
+    justify-content: center;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .hero-socials {
+    justify-content: center;
+  }
+}
+
+/* تجاوب (max-width: 768px) */
+@media (max-width: 768px) {
+  .hero-container {
+    padding-left: 16px;
+
+    padding-right: 16px;
+  }
+
+  .hero {
+    min-height: auto;
+
+    padding-top: 100px;
+
+    padding-bottom: 50px;
+  }
+
+  .hero-container {
+    gap: 0;
+  }
+
+  .hero-visual {
+    min-height: 300px;
+
+    padding: 20px 0 30px;
+  }
+
+  .hero-headline {
+    font-size: clamp(2rem, 9vw, 2.8rem);
+
+    letter-spacing: 0;
+  }
+
+  .hero-sub {
+    font-size: 0.7rem;
+  }
+
+  .hero-buttons {
+    width: 100%;
+  }
+
+  .hero-buttons .btn {
+    width: 100%;
+
+    justify-content: center;
+  }
+
+  .hero-tags {
+    gap: 7px;
+  }
+
+  .tag {
+    font-size: 0.68rem;
+
+    padding: 6px 10px;
+  }
+}
+
+/* تجاوب (max-width: 420px) */
 @media (max-width: 420px) {
   .hero-badge {
     margin: 0.5rem 0 1rem;
@@ -966,6 +1225,77 @@ body::after {
     transform: rotate(360deg);
   }
 }
+/* تجاوب (max-width: 768px) */
+@media (max-width: 768px) {
+  .profile-img-container {
+    width: 170px;
+
+    height: 170px;
+
+    margin: auto;
+  }
+
+  .geo-diamond {
+    width: 210px;
+
+    height: 210px;
+  }
+
+  .profile-img-container {
+    width: min(220px, 58vw);
+
+    height: min(220px, 58vw);
+  }
+
+  .geo-diamond {
+    width: min(250px, 68vw);
+
+    height: min(250px, 68vw);
+  }
+
+  .geo-ring-1 {
+    width: min(300px, 82vw);
+
+    height: min(300px, 82vw);
+  }
+
+  .geo-ring-2 {
+    width: min(350px, 94vw);
+
+    height: min(350px, 94vw);
+  }
+
+  .geo-ring-3 {
+    display: none;
+  }
+}
+
+/* تجاوب (prefers-reduced-motion: reduce) */
+@media (prefers-reduced-motion: reduce) {
+  .geo-diamond {
+    animation: none !important;
+  }
+
+  .geo-ring {
+    animation: none !important;
+  }
+}
+
+/* ===== تحسين أشكال Hero ===== */
+.profile-img-container {
+  flex: 0 0 auto;
+}
+.geo-ring-1 {
+  max-width: 100%;
+  max-height: 100%;
+}
+.geo-ring-2 {
+  pointer-events: none;
+}
+.geo-ring-3 {
+  pointer-events: none;
+}
+
 /* تجاوب (max-width: 768px) */
 @media (max-width: 768px) {
   .profile-img-container {
@@ -1593,22 +1923,34 @@ body::after {
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
 }
+/* ===== صور المشاريع ===== */
+
 .project-card {
   overflow: hidden;
+  padding: 0;
 }
+
 .project-preview {
-  height: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(
-    135deg,
-    rgba(45, 57, 86, 0.055),
-    rgba(255, 255, 255, 0.42)
-  );
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  display: block;
+  padding: 0;
+  margin: 0;
 }
+
+.project-preview img {
+  width: 100%;
+  height: 220px;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  margin: 0;
+}
+
+/* معلومات المشروع */
 .project-info {
-  padding: 2px;
+  padding: 22px 25px 25px;
 }
 .project-tags {
   display: flex;
@@ -1631,6 +1973,43 @@ body::after {
   color: var(--primary);
   margin-top: 12px;
 }
+/* تجاوب (max-width: 1024px) and (min-width: 769px) */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* تجاوب (max-width: 768px) */
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* تجاوب (max-width: 900px) */
+@media (max-width: 900px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* تجاوب (max-width: 768px) */
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== تحسينات المشاريع ===== */
+.project-card {
+  min-width: 0;
+}
+.project-preview > i {
+  font-size: 3rem;
+  color: var(--primary);
+}
+
 /* تجاوب (max-width: 1024px) and (min-width: 769px) */
 @media (max-width: 1024px) and (min-width: 769px) {
   .projects-grid {
@@ -1811,6 +2190,7 @@ body::after {
     min-height: 52px !important;
   }
 }
+
 /* ===== تصغير ارتفاع الفورم ===== */
 .contact-form {
   padding: 20px !important;
@@ -1851,6 +2231,7 @@ body::after {
 }
 
 /* تجاوب الموبايل للفورم المختصر */
+
 @media (max-width: 768px) {
   .contact-form {
     padding: 18px !important;
@@ -1875,6 +2256,116 @@ body::after {
   .contact-form .btn-primary {
     height: 50px !important;
     min-height: 50px !important;
+  }
+}
+
+/* ===== تحسينات Contact ===== */
+.contact-info {
+  min-width: 0;
+}
+.contact-form {
+  min-width: 0;
+}
+.contact-info > .glass-card {
+  width: 100%;
+}
+.contact-form {
+  width: 100%;
+}
+.contact-info > a.glass-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px;
+}
+.contact-info > .glass-card > i {
+  flex: 0 0 auto;
+  font-size: 1.8rem;
+  color: var(--primary);
+}
+.form-group input {
+  display: block;
+  min-height: 48px;
+  outline: none;
+}
+.form-group select {
+  display: block;
+  min-height: 48px;
+  outline: none;
+}
+.form-group textarea {
+  display: block;
+  min-height: 48px;
+  outline: none;
+}
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+.contact-form .btn {
+  border: 0;
+  cursor: pointer;
+}
+
+/* تجاوب (max-width: 1024px) and (min-width: 769px) */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .contact-wrap {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* تجاوب (max-width: 768px) */
+@media (max-width: 768px) {
+  .contact-wrap {
+    grid-template-columns: 1fr;
+
+    gap: 28px;
+  }
+
+  .contact-info {
+    gap: 16px;
+  }
+
+  .contact-form {
+    padding: 24px;
+  }
+}
+
+/* تجاوب (max-width: 900px) */
+@media (max-width: 900px) {
+  .contact-wrap {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* تجاوب (max-width: 768px) */
+@media (max-width: 768px) {
+  .contact-form {
+    padding: 22px;
+  }
+
+  .contact-form {
+    padding: 20px !important;
+  }
+
+  .contact-form input {
+    height: 46px !important;
+  }
+
+  .contact-form select {
+    height: 46px !important;
+  }
+
+  .contact-form textarea {
+    height: 110px !important;
+
+    min-height: 110px !important;
+  }
+
+  .contact-form button[type="submit"] {
+    height: 52px !important;
+
+    min-height: 52px !important;
   }
 }
 
@@ -2297,6 +2788,88 @@ body::after {
   }
 }
 
+/* ===== أولوية N8N ===== */
+n8n-chat,
+.n8n-chat,
+[data-n8n-chat] {
+  z-index: 9999 !important;
+}
+/* تجاوب (max-width: 768px) */
+@media (max-width: 768px) {
+  .chat-window {
+    max-width: calc(100vw - 24px) !important;
+    margin: 0 2rem 0 0;
+  }
+
+  .n8n-chat-window {
+    max-width: calc(100vw - 24px) !important;
+  }
+}
+
+/* تجاوب (max-width: 600px) */
+@media (max-width: 600px) {
+  #n8n-chat {
+    right: 12px;
+
+    bottom: 12px;
+  }
+
+  #n8n-chat .chat-window {
+    width: calc(100vw - 24px);
+
+    height: calc(100vh - 105px);
+
+    max-width: none;
+
+    max-height: none;
+
+    right: 12px;
+
+    bottom: 82px;
+
+    border-radius: 18px;
+  }
+
+  #n8n-chat .chat-window-toggle {
+    right: 14px;
+
+    bottom: 14px;
+
+    width: 54px;
+
+    height: 54px;
+  }
+}
+
+/* ============================================================
+   N8N CHAT - MOBILE CENTER
+   ------------------------------------------------------------
+   توسيط نافذة الشات في منتصف شاشة الموبايل
+   ============================================================ */
+
+@media (max-width: 600px) {
+  #n8n-chat .chat-window {
+    left: 50% !important;
+    right: auto !important;
+
+    transform: translateX(-4%) !important;
+
+    bottom: 82px !important;
+
+    width: calc(100vw - 24px) !important;
+
+    max-width: calc(100vw - 24px) !important;
+  }
+}
+
+/* ===== ضمان ظهور N8N فوق العناصر ===== */
+/* ضمان ظهور نافذة N8N فوق عناصر الموقع */
+n8n-chat,
+.n8n-chat,
+[data-n8n-chat] {
+  z-index: 9999 !important;
+}
+
 /* ===== Footer ===== */
 .footer {
   padding: 72px 0 0;
@@ -2528,608 +3101,7 @@ body::after {
   }
 }
 
-/* ===== الظهور عند التمرير ===== */
-[data-reveal] {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.6s ease;
-}
-[data-reveal].revealed {
-  opacity: 1;
-  transform: translateY(0);
-}
-[data-delay="100"] {
-  transition-delay: 0.1s;
-}
-[data-delay="150"] {
-  transition-delay: 0.15s;
-}
-[data-delay="200"] {
-  transition-delay: 0.2s;
-}
-[data-delay="300"] {
-  transition-delay: 0.3s;
-}
-/* تجاوب (prefers-reduced-motion: reduce) */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-
-    animation-iteration-count: 1 !important;
-
-    scroll-behavior: auto !important;
-
-    transition-duration: 0.01ms !important;
-  }
-
-  *::before {
-    animation-duration: 0.01ms !important;
-
-    animation-iteration-count: 1 !important;
-
-    scroll-behavior: auto !important;
-
-    transition-duration: 0.01ms !important;
-  }
-
-  *::after {
-    animation-duration: 0.01ms !important;
-
-    animation-iteration-count: 1 !important;
-
-    scroll-behavior: auto !important;
-
-    transition-duration: 0.01ms !important;
-  }
-}
-
-/* ===== إصلاحات عامة ===== */
-html {
-  scroll-padding-top: 84px;
-}
-button {
-  font: inherit;
-}
-input {
-  font: inherit;
-}
-select {
-  font: inherit;
-}
-textarea {
-  font: inherit;
-}
-button {
-  border: 0;
-}
-
-/* ===== إصلاحات الحاويات ===== */
-.container {
-  min-width: 0;
-}
-/* تجاوب (max-width: 768px) */
-@media (max-width: 768px) {
-  .container {
-    padding-left: 16px;
-
-    padding-right: 16px;
-  }
-}
-
-/* ===== إصلاحات Navbar ===== */
-.nav-container {
-  min-width: 0;
-}
-.nav-container {
-  gap: 20px;
-}
-.nav-links {
-  flex-shrink: 0;
-}
-.nav-link.nav-cta {
-  white-space: nowrap;
-}
-/* تجاوب (max-width: 768px) */
-@media (max-width: 768px) {
-  .navbar {
-    height: 64px;
-  }
-
-  .nav-links {
-    position: fixed;
-
-    top: 0;
-
-    right: -100%;
-
-    width: 100%;
-
-    height: 100vh;
-
-    background: rgba(248, 247, 242, 0.98);
-
-    flex-direction: column;
-
-    justify-content: center;
-
-    gap: 24px;
-
-    transition: right 0.3s ease;
-  }
-
-  .nav-links.open {
-    right: 0;
-  }
-
-  .hamburger {
-    display: flex;
-
-    z-index: 1001;
-  }
-}
-
-/* تجاوب (max-width: 1100px) */
-@media (max-width: 1100px) {
-  .nav-links {
-    gap: 20px;
-  }
-}
-
-/* تجاوب (max-width: 768px) */
-@media (max-width: 768px) {
-  .nav-container {
-    padding-left: 16px;
-
-    padding-right: 16px;
-  }
-}
-
-/* تجاوب (max-width: 420px) */
-@media (max-width: 420px) {
-  .nav-logo-img {
-    width: 34px;
-
-    height: 34px;
-  }
-
-  .logo-name {
-    font-size: 0.9rem;
-  }
-}
-
-/* ===== إصلاحات Hero ===== */
-.hero-container {
-  min-width: 0;
-}
-.hero-content {
-  min-width: 0;
-}
-.hero-visual {
-  min-width: 0;
-}
-.hero-container {
-  grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
-  gap: 20px;
-}
-.hero-headline {
-  overflow-wrap: anywhere;
-}
-/* تجاوب (max-width: 1024px) and (min-width: 769px) */
-@media (max-width: 1024px) and (min-width: 769px) {
-  .hero-container {
-    grid-template-columns: 1fr;
-
-    text-align: center;
-  }
-
-  .hero-visual {
-    order: -1;
-  }
-
-  .hero-tags {
-    justify-content: center;
-  }
-
-  .hero-buttons {
-    justify-content: center;
-  }
-
-  .hero-socials {
-    justify-content: center;
-  }
-}
-
-/* تجاوب (max-width: 768px) */
-@media (max-width: 768px) {
-  .hero {
-    padding-top: 8rem;
-
-    padding-bottom: 1rem;
-  }
-
-  .hero-container {
-    grid-template-columns: 1fr;
-
-    gap: 15px;
-
-    text-align: center;
-  }
-
-  .hero-content {
-    order: 2;
-  }
-
-  .hero-visual {
-    order: 1;
-
-    min-height: auto;
-
-    padding-bottom: 2.5rem;
-  }
-
-  .hero-tags {
-    justify-content: center;
-  }
-
-  .hero-buttons {
-    justify-content: center;
-  }
-
-  .hero-socials {
-    justify-content: center;
-  }
-
-  .hero-headline {
-    font-size: 1.8rem;
-  }
-
-  .hero-tags {
-    margin-bottom: 20px;
-  }
-
-  .tag {
-    font-size: 0.65rem;
-
-    padding: 6px 12px;
-  }
-
-  .hero-buttons {
-    font-size: 0.8rem;
-
-    padding: 0 10px;
-
-    margin-bottom: 30px;
-  }
-}
-
-/* تجاوب (max-width: 1100px) */
-@media (max-width: 1100px) {
-  .hero-container {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .hero-headline {
-    font-size: clamp(2rem, 4.2vw, 3.4rem);
-  }
-}
-
-/* تجاوب (max-width: 900px) */
-@media (max-width: 900px) {
-  .hero-container {
-    grid-template-columns: 1fr;
-
-    text-align: center;
-
-    gap: 10px;
-  }
-
-  .hero-content {
-    order: 2;
-  }
-
-  .hero-visual {
-    order: 1;
-
-    min-height: 360px;
-  }
-
-  .hero-tags {
-    justify-content: center;
-  }
-
-  .hero-buttons {
-    justify-content: center;
-  }
-
-  .hero-socials {
-    justify-content: center;
-  }
-}
-
-/* تجاوب (max-width: 768px) */
-@media (max-width: 768px) {
-  .hero-container {
-    padding-left: 16px;
-
-    padding-right: 16px;
-  }
-
-  .hero {
-    min-height: auto;
-
-    padding-top: 100px;
-
-    padding-bottom: 50px;
-  }
-
-  .hero-container {
-    gap: 0;
-  }
-
-  .hero-visual {
-    min-height: 300px;
-
-    padding: 20px 0 30px;
-  }
-
-  .hero-headline {
-    font-size: clamp(2rem, 9vw, 2.8rem);
-
-    letter-spacing: 0;
-  }
-
-  .hero-sub {
-    font-size: 0.7rem;
-  }
-
-  .hero-buttons {
-    width: 100%;
-  }
-
-  .hero-buttons .btn {
-    width: 100%;
-
-    justify-content: center;
-  }
-
-  .hero-tags {
-    gap: 7px;
-  }
-
-  .tag {
-    font-size: 0.68rem;
-
-    padding: 6px 10px;
-  }
-}
-
-/* تجاوب (max-width: 420px) */
-@media (max-width: 420px) {
-  .hero-badge {
-    margin: 0.5rem 0 1rem;
-
-    padding: 7px 11px;
-
-    font-size: 0.72rem;
-  }
-}
-
-/* ===== إصلاحات الأشكال ===== */
-.profile-img-container {
-  flex: 0 0 auto;
-}
-.geo-ring-1 {
-  max-width: 100%;
-  max-height: 100%;
-}
-.geo-ring-2 {
-  pointer-events: none;
-}
-.geo-ring-3 {
-  pointer-events: none;
-}
-/* تجاوب (max-width: 768px) */
-@media (max-width: 768px) {
-  .profile-img-container {
-    width: 170px;
-
-    height: 170px;
-
-    margin: auto;
-  }
-
-  .geo-diamond {
-    width: 210px;
-
-    height: 210px;
-  }
-
-  .profile-img-container {
-    width: min(220px, 58vw);
-
-    height: min(220px, 58vw);
-  }
-
-  .geo-diamond {
-    width: min(250px, 68vw);
-
-    height: min(250px, 68vw);
-  }
-
-  .geo-ring-1 {
-    width: min(300px, 82vw);
-
-    height: min(300px, 82vw);
-  }
-
-  .geo-ring-2 {
-    width: min(350px, 94vw);
-
-    height: min(350px, 94vw);
-  }
-
-  .geo-ring-3 {
-    display: none;
-  }
-}
-
-/* تجاوب (prefers-reduced-motion: reduce) */
-@media (prefers-reduced-motion: reduce) {
-  .geo-diamond {
-    animation: none !important;
-  }
-
-  .geo-ring {
-    animation: none !important;
-  }
-}
-
-/* ===== إصلاحات Contact ===== */
-.contact-info {
-  min-width: 0;
-}
-.contact-form {
-  min-width: 0;
-}
-.contact-info > .glass-card {
-  width: 100%;
-}
-.contact-form {
-  width: 100%;
-}
-.contact-info > a.glass-card {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 18px;
-}
-.contact-info > .glass-card > i {
-  flex: 0 0 auto;
-  font-size: 1.8rem;
-  color: var(--primary);
-}
-.form-group input {
-  display: block;
-  min-height: 48px;
-  outline: none;
-}
-.form-group select {
-  display: block;
-  min-height: 48px;
-  outline: none;
-}
-.form-group textarea {
-  display: block;
-  min-height: 48px;
-  outline: none;
-}
-.form-group textarea {
-  resize: vertical;
-  min-height: 120px;
-}
-.contact-form .btn {
-  border: 0;
-  cursor: pointer;
-}
-/* تجاوب (max-width: 1024px) and (min-width: 769px) */
-@media (max-width: 1024px) and (min-width: 769px) {
-  .contact-wrap {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* تجاوب (max-width: 768px) */
-@media (max-width: 768px) {
-  .contact-wrap {
-    grid-template-columns: 1fr;
-
-    gap: 28px;
-  }
-
-  .contact-info {
-    gap: 16px;
-  }
-
-  .contact-form {
-    padding: 24px;
-  }
-}
-
-/* تجاوب (max-width: 900px) */
-@media (max-width: 900px) {
-  .contact-wrap {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* تجاوب (max-width: 768px) */
-@media (max-width: 768px) {
-  .contact-form {
-    padding: 22px;
-  }
-
-  .contact-form {
-    padding: 20px !important;
-  }
-
-  .contact-form input {
-    height: 46px !important;
-  }
-
-  .contact-form select {
-    height: 46px !important;
-  }
-
-  .contact-form textarea {
-    height: 110px !important;
-
-    min-height: 110px !important;
-  }
-
-  .contact-form button[type="submit"] {
-    height: 52px !important;
-
-    min-height: 52px !important;
-  }
-}
-
-/* ===== إصلاحات Projects ===== */
-.project-card {
-  min-width: 0;
-}
-.project-preview > i {
-  font-size: 3rem;
-  color: var(--primary);
-}
-/* تجاوب (max-width: 1024px) and (min-width: 769px) */
-@media (max-width: 1024px) and (min-width: 769px) {
-  .projects-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* تجاوب (max-width: 768px) */
-@media (max-width: 768px) {
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* تجاوب (max-width: 900px) */
-@media (max-width: 900px) {
-  .projects-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-/* تجاوب (max-width: 768px) */
-@media (max-width: 768px) {
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* ===== إصلاحات Footer ===== */
+/* ===== تحسينات Footer ===== */
 .footer-content {
   grid-template-columns: 1.5fr repeat(4, 1fr);
 }
@@ -3198,7 +3170,62 @@ button {
   }
 }
 
-/* ===== إصلاحات الظهور ===== */
+/* ===== الظهور عند التمرير ===== */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+[data-reveal].revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+[data-delay="100"] {
+  transition-delay: 0.1s;
+}
+[data-delay="150"] {
+  transition-delay: 0.15s;
+}
+[data-delay="200"] {
+  transition-delay: 0.2s;
+}
+[data-delay="300"] {
+  transition-delay: 0.3s;
+}
+/* تجاوب (prefers-reduced-motion: reduce) */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+
+    animation-iteration-count: 1 !important;
+
+    scroll-behavior: auto !important;
+
+    transition-duration: 0.01ms !important;
+  }
+
+  *::before {
+    animation-duration: 0.01ms !important;
+
+    animation-iteration-count: 1 !important;
+
+    scroll-behavior: auto !important;
+
+    transition-duration: 0.01ms !important;
+  }
+
+  *::after {
+    animation-duration: 0.01ms !important;
+
+    animation-iteration-count: 1 !important;
+
+    scroll-behavior: auto !important;
+
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ===== تحسين الظهور ===== */
 [data-reveal] {
   will-change: transform, opacity;
 }
@@ -3243,57 +3270,6 @@ button {
   transform: translate(var(--px, 0), var(--py, 0));
 }
 
-/* ضمان ظهور نافذة N8N فوق عناصر الموقع */
-n8n-chat,
-.n8n-chat,
-[data-n8n-chat] {
-  z-index: 9999 !important;
-}
-/* تجاوب (max-width: 768px) */
-@media (max-width: 768px) {
-  .profile-img-container {
-    width: 170px;
-
-    height: 170px;
-
-    margin: auto;
-  }
-
-  .geo-diamond {
-    width: 210px;
-
-    height: 210px;
-  }
-
-  .profile-img-container {
-    width: min(220px, 58vw);
-
-    height: min(220px, 58vw);
-  }
-
-  .geo-diamond {
-    width: min(250px, 68vw);
-
-    height: min(250px, 68vw);
-  }
-
-  .geo-ring-1 {
-    width: min(300px, 82vw);
-
-    height: min(300px, 82vw);
-  }
-
-  .geo-ring-2 {
-    width: min(350px, 94vw);
-
-    height: min(350px, 94vw);
-  }
-
-  .geo-ring-3 {
-    display: none;
-  }
-}
-
 /* تجاوب (prefers-reduced-motion: reduce) */
 @media (prefers-reduced-motion: reduce) {
   .geo-diamond {
@@ -3302,59 +3278,6 @@ n8n-chat,
 
   .geo-ring {
     animation: none !important;
-  }
-}
-
-/* ===== أولوية N8N ===== */
-n8n-chat,
-.n8n-chat,
-[data-n8n-chat] {
-  z-index: 9999 !important;
-}
-/* تجاوب (max-width: 768px) */
-@media (max-width: 768px) {
-  .chat-window {
-    max-width: calc(100vw - 24px) !important;
-    margin: 0 2rem 0 0;
-  }
-
-  .n8n-chat-window {
-    max-width: calc(100vw - 24px) !important;
-  }
-}
-
-/* تجاوب (max-width: 600px) */
-@media (max-width: 600px) {
-  #n8n-chat {
-    right: 12px;
-
-    bottom: 12px;
-  }
-
-  #n8n-chat .chat-window {
-    width: calc(100vw - 24px);
-
-    height: calc(100vh - 105px);
-
-    max-width: none;
-
-    max-height: none;
-
-    right: 12px;
-
-    bottom: 82px;
-
-    border-radius: 18px;
-  }
-
-  #n8n-chat .chat-window-toggle {
-    right: 14px;
-
-    bottom: 14px;
-
-    width: 54px;
-
-    height: 54px;
   }
 }
 
@@ -3377,26 +3300,5 @@ n8n-chat,
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
-  }
-}
-
-/* ============================================================
-   N8N CHAT - MOBILE CENTER
-   ------------------------------------------------------------
-   توسيط نافذة الشات في منتصف شاشة الموبايل
-   ============================================================ */
-
-@media (max-width: 600px) {
-  #n8n-chat .chat-window {
-    left: 50% !important;
-    right: auto !important;
-
-    transform: translateX(-4%) !important;
-
-    bottom: 82px !important;
-
-    width: calc(100vw - 24px) !important;
-
-    max-width: calc(100vw - 24px) !important;
   }
 }
